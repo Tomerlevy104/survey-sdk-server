@@ -6,15 +6,13 @@ public class Survey {
 
     private String id;
     private String title;
-    private String version;
     private List<Question> questions;
 
     public Survey() { }
 
-    public Survey(String id, String title, String version, List<Question> questions) {
+    public Survey(String id, String title, List<Question> questions) {
         this.id = id;
         this.title = title;
-        this.version = version;
         this.questions = questions;
     }
 
@@ -24,10 +22,6 @@ public class Survey {
 
     public String getTitle() {
         return title;
-    }
-
-    public String getVersion() {
-        return version;
     }
 
     public List<Question> getQuestions() {
@@ -40,10 +34,6 @@ public class Survey {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
     }
 
     public void setQuestions(List<Question> questions) {
