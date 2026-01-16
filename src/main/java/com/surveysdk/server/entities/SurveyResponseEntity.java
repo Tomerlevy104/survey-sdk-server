@@ -1,6 +1,6 @@
-package com.surveysdk.server.db;
+package com.surveysdk.server.entities;
 
-import com.surveysdk.server.models.Answer;
+import com.surveysdk.server.dtos.AnswerDTO;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -9,21 +9,21 @@ import java.util.Date;
 import java.util.List;
 
 @Document(collection = "survey_responses")
-public class SurveyResponseDocument {
+public class SurveyResponseEntity {
 
     @Id
     private String id;
 
     private String surveyId;
 
-    private List<Answer> answers;
+    private List<AnswerDTO> answers;
 
     @CreatedDate
     private Date createdDate;
 
-    public SurveyResponseDocument() {}
+    public SurveyResponseEntity() {}
 
-    public SurveyResponseDocument(String id, String surveyId, List<Answer> answers, Date createdDate) {
+    public SurveyResponseEntity(String id, String surveyId, List<AnswerDTO> answers, Date createdDate) {
         this.id = id;
         this.surveyId = surveyId;
         this.answers = answers;
@@ -36,8 +36,8 @@ public class SurveyResponseDocument {
     public String getSurveyId() { return surveyId; }
     public void setSurveyId(String surveyId) { this.surveyId = surveyId; }
 
-    public List<Answer> getAnswers() { return answers; }
-    public void setAnswers(List<Answer> answers) { this.answers = answers; }
+    public List<AnswerDTO> getAnswers() { return answers; }
+    public void setAnswers(List<AnswerDTO> answers) { this.answers = answers; }
 
     public Date getCreatedDate() { return createdDate; }
     public void setCreatedDate(Date createdDate) { this.createdDate = createdDate; }

@@ -1,16 +1,16 @@
-package com.surveysdk.server.models;
+package com.surveysdk.server.dtos;
 
 import java.util.List;
 
-public class Survey {
+public class SurveyDTO {
 
     private String id;
     private String title;
-    private List<Question> questions;
+    private List<QuestionDTO> questions;
 
-    public Survey() { }
+    public SurveyDTO() { }
 
-    public Survey(String id, String title, List<Question> questions) {
+    public SurveyDTO(String id, String title, List<QuestionDTO> questions) {
         this.id = id;
         this.title = title;
         this.questions = questions;
@@ -24,7 +24,7 @@ public class Survey {
         return title;
     }
 
-    public List<Question> getQuestions() {
+    public List<QuestionDTO> getQuestions() {
         return questions;
     }
 
@@ -36,7 +36,7 @@ public class Survey {
         this.title = title;
     }
 
-    public void setQuestions(List<Question> questions) {
+    public void setQuestions(List<QuestionDTO> questions) {
         this.questions = questions;
     }
 }

@@ -1,11 +1,11 @@
 package com.surveysdk.server.services;
 
-import com.surveysdk.server.models.Question;
+import com.surveysdk.server.dtos.QuestionDTO;
 import com.surveysdk.server.repositories.SurveyRepository;
 import com.surveysdk.server.utils.exceptions.NotFoundException;
 import org.springframework.stereotype.Service;
-import com.surveysdk.server.db.SurveyDocument;
-import com.surveysdk.server.models.Survey;
+import com.surveysdk.server.entities.SurveyEntity;
+import com.surveysdk.server.dtos.SurveyDTO;
 import com.surveysdk.server.utils.converters.SurveyConverter;
 
 import java.util.List;
@@ -22,27 +22,27 @@ public class SurveyService {
     }
 
     // Create survey
-    public Survey saveSurvey(Survey survey) {
+    public SurveyDTO saveSurvey(SurveyDTO survey) {
         generateQuestionId(survey.getQuestions());
-        SurveyDocument doc = SurveyConverter.fromSurveyModelToSurveyDocument(survey);
-        SurveyDocument saved = surveyRepository.save(doc);
-        return SurveyConverter.fromSurveyDocumentToSurveyModel(saved);
+        SurveyEntity surveyEntity = SurveyConverter.fromSurveyDtoToSurveyEntity(survey);
+        SurveyEntity saved = surveyRepository.save(surveyEntity);
+        return SurveyConverter.fromSurveyEntityToSurveyDto(saved);
     }
 
     // Get all surveys
-    public List<Survey> getAllSurveys() {
+    public List<SurveyDTO> getAllSurveys() {
         return surveyRepository.findAll()
                 .stream()
-                .map(SurveyConverter::fromSurveyDocumentToSurveyModel)
+                .map(SurveyConverter::fromSurveyEntityToSurveyDto)
                 .toList();
     }
 
     // Get survey by ID
-    public Survey getSurveyById(String id) {
-        SurveyDocument doc = surveyRepository.findById(id)
+    public SurveyDTO getSurveyById(String id) {
+        SurveyEntity doc = surveyRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Survey not found: " + id));
 
-        return SurveyConverter.fromSurveyDocumentToSurveyModel(doc);
+        return SurveyConverter.fromSurveyEntityToSurveyDto(doc);
     }
 
     // Delete survey
@@ -54,8 +54,8 @@ public class SurveyService {
     }
 
     // Update survey
-    public Survey updateSurvey(String id, Survey updatedSurvey) {
-        SurveyDocument existing = surveyRepository.findById(id)
+    public SurveyDTO updateSurvey(String id, SurveyDTO updatedSurvey) {
+        SurveyEntity existing = surveyRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Survey not found: " + id));
 
         generateQuestionId(updatedSurvey.getQuestions());
@@ -64,29 +64,29 @@ public class SurveyService {
         existing.setTitle(updatedSurvey.getTitle());
         existing.setQuestions(updatedSurvey.getQuestions());
 
-        SurveyDocument saved = surveyRepository.save(existing);
-        return SurveyConverter.fromSurveyDocumentToSurveyModel(saved);
+        SurveyEntity saved = surveyRepository.save(existing);
+        return SurveyConverter.fromSurveyEntityToSurveyDto(saved);
     }
 
     // Get random survey
-    public Survey getRandomSurvey() {
-        List<SurveyDocument> allSurveys = surveyRepository.findAll();
+    public SurveyDTO getRandomSurvey() {
+        List<SurveyEntity> allSurveys = surveyRepository.findAll();
 
         if (allSurveys.isEmpty()) {
             throw new NotFoundException("No surveys found");
         }
 
         int index = ThreadLocalRandom.current().nextInt(allSurveys.size());
-        SurveyDocument picked = allSurveys.get(index);
+        SurveyEntity picked = allSurveys.get(index);
 
-        return SurveyConverter.fromSurveyDocumentToSurveyModel(picked);
+        return SurveyConverter.fromSurveyEntityToSurveyDto(picked);
     }
 
     // Generate ID for questions
-    private void generateQuestionId(List<Question> questions) {
+    private void generateQuestionId(List<QuestionDTO> questions) {
         if (questions == null) return;
 
-        for (Question q : questions) {
+        for (QuestionDTO q : questions) {
             if (q == null) continue;
 
             String id = q.getId();

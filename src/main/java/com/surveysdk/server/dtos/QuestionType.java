@@ -1,4 +1,4 @@
-package com.surveysdk.server.models;
+package com.surveysdk.server.dtos;
 
 public enum QuestionType {
         TEXT,

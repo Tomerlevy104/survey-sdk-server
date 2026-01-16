@@ -1,29 +1,28 @@
 package com.surveysdk.server.utils.converters;
 
-import com.surveysdk.server.db.SurveyResponseDocument;
-import com.surveysdk.server.models.SurveyResponse;
+import com.surveysdk.server.entities.SurveyResponseEntity;
+import com.surveysdk.server.dtos.SurveyResponseDTO;
 
 public class SurveyResponseConverter {
 
     private SurveyResponseConverter() {
-        // utility class
     }
 
-    public static SurveyResponseDocument fromModelToDocument(SurveyResponse model) {
-        if (model == null) return null;
+    public static SurveyResponseEntity fromDtoToEntity(SurveyResponseDTO surveyResponseDTO) {
+        if (surveyResponseDTO == null) return null;
 
-        SurveyResponseDocument doc = new SurveyResponseDocument();
-        doc.setSurveyId(model.getSurveyId());
-        doc.setAnswers(model.getAnswers());
-        return doc;
+        SurveyResponseEntity entity = new SurveyResponseEntity();
+        entity.setSurveyId(surveyResponseDTO.getSurveyId());
+        entity.setAnswers(surveyResponseDTO.getAnswers());
+        return entity;
     }
 
-    public static SurveyResponse fromDocumentToModel(SurveyResponseDocument doc) {
-        if (doc == null) return null;
+    public static SurveyResponseDTO fromEntityToDto(SurveyResponseEntity entity) {
+        if (entity == null) return null;
 
-        SurveyResponse model = new SurveyResponse();
-        model.setSurveyId(doc.getSurveyId());
-        model.setAnswers(doc.getAnswers());
-        return model;
+        SurveyResponseDTO dto = new SurveyResponseDTO();
+        dto.setSurveyId(entity.getSurveyId());
+        dto.setAnswers(entity.getAnswers());
+        return dto;
     }
 }

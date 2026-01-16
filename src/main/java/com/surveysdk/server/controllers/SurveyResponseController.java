@@ -1,6 +1,6 @@
 package com.surveysdk.server.controllers;
 
-import com.surveysdk.server.models.SurveyResponse;
+import com.surveysdk.server.dtos.SurveyResponseDTO;
 import com.surveysdk.server.services.SurveyResponseService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +17,7 @@ public class SurveyResponseController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public SurveyResponse submit(@RequestBody SurveyResponse response) {
-        return surveyResponseService.saveResponse(response);
+    public SurveyResponseDTO submit(@RequestBody SurveyResponseDTO responseDto) {
+        return surveyResponseService.saveResponse(responseDto);
     }
 }

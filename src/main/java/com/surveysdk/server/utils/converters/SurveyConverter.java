@@ -1,7 +1,7 @@
 package com.surveysdk.server.utils.converters;
 
-import com.surveysdk.server.db.SurveyDocument;
-import com.surveysdk.server.models.Survey;
+import com.surveysdk.server.entities.SurveyEntity;
+import com.surveysdk.server.dtos.SurveyDTO;
 
 public class SurveyConverter {
 
@@ -9,31 +9,31 @@ public class SurveyConverter {
     }
 
     /**
-     * Convert SurveyModel -> SurveyDocument (MongoDB document)
+     * Convert SurveyDTO -> SurveyEntity
      */
-    public static SurveyDocument fromSurveyModelToSurveyDocument(Survey survey) {
-        if (survey == null) {
+    public static SurveyEntity fromSurveyDtoToSurveyEntity(SurveyDTO surveyDTO) {
+        if (surveyDTO == null) {
             return null;
         }
 
-        SurveyDocument doc = new SurveyDocument();
-        doc.setId(survey.getId());
-        doc.setTitle(survey.getTitle());
-        doc.setQuestions(survey.getQuestions());
+        SurveyEntity doc = new SurveyEntity();
+        doc.setId(surveyDTO.getId());
+        doc.setTitle(surveyDTO.getTitle());
+        doc.setQuestions(surveyDTO.getQuestions());
         return doc;
     }
     /**
-     * Convert SurveyDocument -> SurveyModel
+     * Convert SurveyEntity -> SurveyDTO
      */
-    public static Survey fromSurveyDocumentToSurveyModel(SurveyDocument doc) {
-        if (doc == null) {
+    public static SurveyDTO fromSurveyEntityToSurveyDto(SurveyEntity surveyEntity) {
+        if (surveyEntity == null) {
             return null;
         }
 
-        Survey survey = new Survey();
-        survey.setId(doc.getId());
-        survey.setTitle(doc.getTitle());
-        survey.setQuestions(doc.getQuestions());
+        SurveyDTO survey = new SurveyDTO();
+        survey.setId(surveyEntity.getId());
+        survey.setTitle(surveyEntity.getTitle());
+        survey.setQuestions(surveyEntity.getQuestions());
         return survey;
     }
 }

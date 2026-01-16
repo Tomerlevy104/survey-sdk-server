@@ -1,7 +1,7 @@
 package com.surveysdk.server.services;
 
-import com.surveysdk.server.db.SurveyResponseDocument;
-import com.surveysdk.server.models.SurveyResponse;
+import com.surveysdk.server.entities.SurveyResponseEntity;
+import com.surveysdk.server.dtos.SurveyResponseDTO;
 import com.surveysdk.server.repositories.SurveyResponseRepository;
 import com.surveysdk.server.utils.converters.SurveyResponseConverter;
 import org.springframework.stereotype.Service;
@@ -15,11 +15,11 @@ public class SurveyResponseService {
         this.surveyResponseRepository = surveyResponseRepository;
     }
 
-    public SurveyResponse saveResponse(SurveyResponse response) {
-        SurveyResponseDocument doc =
-                SurveyResponseConverter.fromModelToDocument(response);
+    public SurveyResponseDTO saveResponse(SurveyResponseDTO responseDto) {
+        SurveyResponseEntity entity =
+                SurveyResponseConverter.fromDtoToEntity(responseDto);
 
-        SurveyResponseDocument saved = surveyResponseRepository.save(doc);
-        return SurveyResponseConverter.fromDocumentToModel(saved);
+        SurveyResponseEntity savedEntity = surveyResponseRepository.save(entity);
+        return SurveyResponseConverter.fromEntityToDto(savedEntity); // Return surveyResponseDTO
     }
 }

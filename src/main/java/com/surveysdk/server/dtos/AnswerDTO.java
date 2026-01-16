@@ -1,13 +1,13 @@
-package com.surveysdk.server.models;
+package com.surveysdk.server.dtos;
 
-public class Answer {
+public class AnswerDTO {
 
     private String questionId;
     private String value;
 
-    public Answer() {}
+    public AnswerDTO() {}
 
-    public Answer(String questionId, String value) {
+    public AnswerDTO(String questionId, String value) {
         this.questionId = questionId;
         this.value = value;
     }

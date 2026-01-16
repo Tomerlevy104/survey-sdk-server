@@ -1,17 +1,17 @@
-package com.surveysdk.server.models;
+package com.surveysdk.server.dtos;
 
 import java.util.List;
 
-public class Question {
+public class QuestionDTO {
 
     private String id;
     private QuestionType type;
     private String prompt;
     private List<String> options; // null/empty for TEXT
 
-    public Question() { }
+    public QuestionDTO() { }
 
-    public Question(String id, QuestionType type, String prompt, List<String> options) {
+    public QuestionDTO(String id, QuestionType type, String prompt, List<String> options) {
         this.id = id;
         this.type = type;
         this.prompt = prompt;

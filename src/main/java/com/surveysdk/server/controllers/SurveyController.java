@@ -1,6 +1,6 @@
 package com.surveysdk.server.controllers;
 
-import com.surveysdk.server.models.Survey;
+import com.surveysdk.server.dtos.SurveyDTO;
 import com.surveysdk.server.services.SurveyService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +24,7 @@ public class SurveyController {
     // Create
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Survey createSurvey(@RequestBody Survey survey) {
+    public SurveyDTO createSurvey(@RequestBody SurveyDTO survey) {
         // Set SurveyId as null if the id is ""
         if (survey.getId() != null && survey.getId().trim().isEmpty()) {
             survey.setId(null);
@@ -32,19 +32,19 @@ public class SurveyController {
         return surveyService.saveSurvey(survey);
     }
 
-    // Get all
+    // Get all surveys
     @GetMapping
-    public List<Survey> getAllSurveys() {
+    public List<SurveyDTO> getAllSurveys() {
         return surveyService.getAllSurveys();
     }
 
-    // Get by id
+    // Get survey by id
     @GetMapping("/{id}")
-    public Survey getSurveyById(@PathVariable String id) {
+    public SurveyDTO getSurveyById(@PathVariable String id) {
         return surveyService.getSurveyById(id);
     }
 
-    // Delete by id
+    // Delete survey by id
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteSurvey(@PathVariable String id) {
@@ -53,13 +53,13 @@ public class SurveyController {
 
     // Update survey by id
     @PutMapping("/{id}")
-    public Survey updateSurvey(@PathVariable String id, @RequestBody Survey survey) {
+    public SurveyDTO updateSurvey(@PathVariable String id, @RequestBody SurveyDTO survey) {
         return surveyService.updateSurvey(id, survey);
     }
 
     // Get random survey
     @GetMapping("/random")
-    public Survey getRandomSurvey() {
+    public SurveyDTO getRandomSurvey() {
         return surveyService.getRandomSurvey();
     }
 }
