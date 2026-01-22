@@ -12,5 +12,4 @@ public class SurveySdkServerApplication {
         System.out.println("MONGODB_URI from env = " + System.getenv("MONGODB_URI"));
         SpringApplication.run(SurveySdkServerApplication.class, args);
     }
-
 }
