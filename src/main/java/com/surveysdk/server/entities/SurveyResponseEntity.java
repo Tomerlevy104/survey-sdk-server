@@ -15,6 +15,7 @@ public class SurveyResponseEntity {
     private String id;
 
     private String surveyId;
+    private String developerId;
 
     private List<AnswerDTO> answers;
 
@@ -23,11 +24,12 @@ public class SurveyResponseEntity {
 
     public SurveyResponseEntity() {}
 
-    public SurveyResponseEntity(String id, String surveyId, List<AnswerDTO> answers, Date createdDate) {
+    public SurveyResponseEntity(String id, String surveyId, String developerId, List<AnswerDTO> answers, Date createdDate) {
         this.id = id;
         this.surveyId = surveyId;
         this.answers = answers;
         this.createdDate = createdDate;
+        this.developerId = developerId;
     }
 
     public String getId() { return id; }
@@ -35,6 +37,9 @@ public class SurveyResponseEntity {
 
     public String getSurveyId() { return surveyId; }
     public void setSurveyId(String surveyId) { this.surveyId = surveyId; }
+
+    public String getDeveloperId() { return developerId; }
+    public void setDeveloperId(String developerId) { this.developerId = developerId; }
 
     public List<AnswerDTO> getAnswers() { return answers; }
     public void setAnswers(List<AnswerDTO> answers) { this.answers = answers; }

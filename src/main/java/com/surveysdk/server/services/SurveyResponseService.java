@@ -15,10 +15,10 @@ public class SurveyResponseService {
         this.surveyResponseRepository = surveyResponseRepository;
     }
 
-    public SurveyResponseDTO saveResponse(SurveyResponseDTO responseDto) {
+    public SurveyResponseDTO saveResponse(SurveyResponseDTO responseDto, String developerId) {
         SurveyResponseEntity entity =
                 SurveyResponseConverter.fromDtoToEntity(responseDto);
-
+        entity.setDeveloperId(developerId);
         SurveyResponseEntity savedEntity = surveyResponseRepository.save(entity);
         return SurveyResponseConverter.fromEntityToDto(savedEntity); // Return surveyResponseDTO
     }

@@ -11,16 +11,17 @@ public class SurveyConverter {
     /**
      * Convert SurveyDTO -> SurveyEntity
      */
-    public static SurveyEntity fromSurveyDtoToSurveyEntity(SurveyDTO surveyDTO) {
+    public static SurveyEntity fromSurveyDtoToSurveyEntity(SurveyDTO surveyDTO, String developerId) {
         if (surveyDTO == null) {
             return null;
         }
 
-        SurveyEntity doc = new SurveyEntity();
-        doc.setId(surveyDTO.getId());
-        doc.setTitle(surveyDTO.getTitle());
-        doc.setQuestions(surveyDTO.getQuestions());
-        return doc;
+        SurveyEntity entity = new SurveyEntity();
+        entity.setId(surveyDTO.getId());
+        entity.setDeveloperId(developerId);
+        entity.setTitle(surveyDTO.getTitle());
+        entity.setQuestions(surveyDTO.getQuestions());
+        return entity;
     }
     /**
      * Convert SurveyEntity -> SurveyDTO
@@ -34,6 +35,7 @@ public class SurveyConverter {
         survey.setId(surveyEntity.getId());
         survey.setTitle(surveyEntity.getTitle());
         survey.setQuestions(surveyEntity.getQuestions());
+        survey.setCreatedDate(surveyEntity.getCreatedDate());
         return survey;
     }
 }
