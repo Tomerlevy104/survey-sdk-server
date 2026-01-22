@@ -9,7 +9,6 @@ import org.springframework.data.mongodb.config.EnableMongoAuditing;
 public class SurveySdkServerApplication {
 
     public static void main(String[] args) {
-        System.out.println("MONGODB_URI from env = " + System.getenv("MONGODB_URI"));
         SpringApplication.run(SurveySdkServerApplication.class, args);
     }
 }
