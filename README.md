@@ -176,7 +176,12 @@ When the server is running, you can use Swagger UI to explore and test endpoints
 - (Render) `https://survey-sdk-server.onrender.com/swagger-ui/index.html`
 
 ---
+## 📚 Documentation
 
+Full documentation is available here:  
+👉 https://tomerlevy104.github.io/smart-survey-sdk/
+
+---
 ## 👨‍💻 Author
 
 Developed by **Tomer Levy**
