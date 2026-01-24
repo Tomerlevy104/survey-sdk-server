@@ -20,13 +20,7 @@ High-level flow:
 - **Android SDK** → calls **SDK API** using **API Key** header: `X-API-Key`
 - **Server** → stores data in **MongoDB Atlas (cloud)**
 
-```mermaid
-flowchart LR
-  AP["Survey Admin Panel (React)"] -->|"JWT (Authorization: Bearer <token>)"| S["Survey SDK Server 
-  (Spring Boot)"]
-  SDK["Smart Survey SDK (Android)"] -->|"API Key (X-API-Key)"| S
-  S --> DB[(MongoDB Atlas)]
-```
+<img src="screenshots/arch_server.png" width="700" />
 
 Project layers (typical request path):
 
