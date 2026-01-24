@@ -6,7 +6,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * CORS configuration
- * Allows the React dev server (http://localhost:3000) to call the backend.
+ * Allows the React dev server (https://survey-admin-panel.onrender.com","http://localhost:3000") to call the backend.
  */
 @Configuration
 public class CorsConfig implements WebMvcConfigurer {
