@@ -11,7 +11,7 @@ import java.util.Date;
  */
 public class JwtUtils {
 
-    // בהמשך להעביר את זה ל-application.properties?
+    // TODO: remove from here and put it in application.properties file
     private static final String SECRET =
             "CHANGE_THIS_SECRET_TO_A_LONG_RANDOM_STRING_AT_LEAST_32_CHARS";
 
@@ -30,7 +30,7 @@ public class JwtUtils {
 
         return Jwts.builder()
                 .setSubject(email)
-                .claim("developerId", developerId) // ✅ הוספת claim
+                .claim("developerId", developerId)
                 .setIssuedAt(now)
                 .setExpiration(expiry)
                 .signWith(KEY, SignatureAlgorithm.HS256)

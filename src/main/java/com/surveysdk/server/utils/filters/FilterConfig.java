@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class FilterConfig {
 
+    //////////////////////////////////////////////////////////////////////////////////////
     @Bean
     public FilterRegistrationBean<JwtAuthFilter> jwtAuthFilter() {
         // Create a registration bean for the JWT authentication filter
