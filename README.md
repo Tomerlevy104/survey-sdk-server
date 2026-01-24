@@ -22,8 +22,9 @@ High-level flow:
 
 ```mermaid
 flowchart LR
-  AP[Survey Admin Panel<br/>(React)] -->|JWT: Authorization Bearer| S[Survey SDK Server<br/>(Spring Boot)]
-  SDK[Smart Survey SDK<br/>(Android)] -->|API Key: X-API-Key| S
+  AP["Survey Admin Panel (React)"] -->|"JWT (Authorization: Bearer <token>)"| S["Survey SDK Server 
+  (Spring Boot)"]
+  SDK["Smart Survey SDK (Android)"] -->|"API Key (X-API-Key)"| S
   S --> DB[(MongoDB Atlas)]
 ```
 
